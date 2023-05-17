@@ -1,0 +1,25 @@
+FROM python:3.8-slim-buster
+
+WORKDIR /app
+
+COPY . /app
+
+RUN pip install --upgrade pip
+
+RUN apt-get update && \
+    apt-get install -y build-essential && \
+    apt-get install -y libglib2.0-dev && \
+    apt-get install -y libdbus-1-dev && \
+    apt-get install -y bluez && \
+    apt-get install -y dbus && \
+    apt-get install -y nano 
+
+RUN mkdir logits
+
+RUN pip install --no-cache-dir -r client-requirements.txt
+
+
+
+
+
+
